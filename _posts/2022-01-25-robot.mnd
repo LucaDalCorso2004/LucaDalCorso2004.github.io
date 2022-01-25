@@ -1,0 +1,100 @@
+
+
+---
+# Mein Portfolio
+---
+## Einführung
+Ich habe in Robocode ein Programm ,wo man seinen eigene Roboter codieren kann und gegen anderen Robter kampf lassen kann, einen junior Roboter codier ,der auf eine Strategie verfolgt
+
+### Ziel
+Mein Ziel ist das der Leser meine Strategie vom Roboter versteht und den dazu gehörigen Code.
+
+
+# Strategie
+Die Strategie meines Roboter ist in drei Phase auf geteilt. in der ersten Phase bewegt sich ein wenig herum und schiesst mit wenig kraft dafür auf weite Distanz andere Roboter ab, diese Phase ist wenn man mehr als 17 Roboter leben.
+Phase zwei ist wenn unter 17 Robter sind dort macht der Roboter mehr Damage und seine reicht weite ist dafür geringer und zu glich  farht der Roboter ein Quadrat was sein Gebit ist und wartet so ab das sich alle andere töten un er einfach zu ein Roboter abschiesst der in sein Gebiet kommt.
+Die dritte Phase ist wenn es weniger als fünf Roboter sind dort feher lasst der Roboter das Gebit und macht grosse schritt und verfolgt die anderen Roboter sein Schusskraft ist auf das Maxiumum eingestellt , doch wurde Distanz kleiner , das er viele schaden machen kann und auch das seine ungenauigkeit nicht sehr gross ist.
+
+# Inhalt 2
+
+```java
+
+public void run() {
+		setColors(orange, blue, white, yellow, black);
+
+		while(true) {
+		
+			if(others > 17)
+	 		{
+				ahead(100);
+				turnGunRight(360);
+				back(10);
+				turnGunLeft(360);
+			}// phase 1
+			else if(others <= 17 && others > 8)
+			{
+				out.println("Mehr als 8");
+				ahead(160);
+				turnGunRight(360);
+				turnRight(90);
+				turnGunLeft(360);
+		    }// phase 2
+			else if(others <= 8)
+			{
+				out.println("Mehr als 0");
+	 			ahead(200);
+				turnGunRight(360);
+				back(20);
+				turnGunLeft(360);
+			} // phase 3
+		} 
+	} 
+	public void onScannedRobot() {
+		int angle = scannedAngle;
+		int distance = scannedDistance;
+		if ( others > 17 ) {
+			fireIfInRange(400, 1, angle, distance, 100);
+			out.println("fire 1");	
+			// phase 1
+		} else if ( others > 5 ) {
+			fireIfInRange(300, 2, angle, distance,70);	
+			out.println("fire 2");
+			// phase 2	
+		} else {
+			fireIfInRange(80, 3, angle, distance,30);
+			out.println("fire 3");	
+			// phase 3
+		}
+	}
+
+
+	public void  fireIfInRange(int range,int firePower, int angle, int distance, int flight){
+		out.println(range + ", " + distance);
+		if(distance < range)
+		{
+			if( gunReady )
+			{
+				turnGunTo(angle);
+				doNothing(1);
+				fire(firePower);
+				back(flight);
+			}
+		} 
+	}	
+# Inhalt 3
+
+
+# Verifikation, Reflektion +  Verbesserungen
+*Ziel erreicht der Lerser könnte meine Robocode verstehen und auch nach vollziehen was meine Strategie ist.
+
+
+Ich hatte schwirig keiten am anfang etwas mit Javascrpit etwas zu codiren.
+Ich hatte auch schwirig keiten meinen Fehler im Code zu finden , da ich hin nicht sauber auf geliste haben
+
+Ich habe meinen Verbesserungs Vorschlag nicht erricht , da ich keinen geschrieben haben.
+
+Meine Verbesserung aus dem jetzigen Projekt ist.
+Wenn ich eine weile mit einem neuen Programmiersprach codier schau ich mir zuhause diese Programmiersprache genauer durch.
+Ich werden meine Codes sauberhalten in dem ich vor Ende jeder Stund einmal über meinen Code gehe und schaue , ob alles sauber geschrieben ist , sonst korrigire ich die fehler.
+
+
